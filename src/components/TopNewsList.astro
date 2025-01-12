@@ -1,0 +1,100 @@
+---
+import { newtClient } from "../lib/newt";
+import type { Article } from "../lib/newt";
+import { formatDate } from "../lib/utils";
+
+const { limit } = Astro.props;
+
+const { items: articles } = await newtClient.getContents<Article>({
+  appUid: "news",
+  modelUid: "article",
+  query: {
+    select: ["title", "slug", "coverImage", "date", "category"],
+    limit: limit,
+  },
+});
+---
+
+<div>
+  {
+    articles.map((article) => {
+      return (
+        <li class="list">
+          <a href={`/news/${article.slug}`} class="link">
+            <img src={article.coverImage.src} alt="" class="newsImage" />
+          </a>
+          <dl class="newsContent">
+            <dt class="newsTitle">
+              <a href={`/news/${article.slug}`}>{article.title}</a>
+            </dt>
+            <dd class="newsMeta">
+              <p>{article.category.name}</p>
+              <p>{formatDate(article.date)}</p>
+            </dd>
+          </dl>
+        </li>
+      );
+    })
+  }
+</div>
+
+<style>
+  /* 基本スタイル（小さい画面向け） */
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--white);
+    list-style: none;
+  }
+
+  .list:last-child {
+    border-bottom: none;
+  }
+
+  .link {
+    display: block;
+  }
+
+  .newsImage {
+    display: none; /* 小さい画面では画像を非表示 */
+  }
+
+  .newsTitle {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .newsMeta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* 大きい画面（600px以上）向けのスタイル */
+  @media (min-width: 600px) {
+    .list {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 24px 0;
+    }
+
+    .newsImage {
+      display: block; /* 大きい画面では画像を表示 */
+      width: 200px;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .newsTitle {
+      font-size: 1.1rem;
+    }
+
+    .newsMeta {
+      gap: 16px;
+    }
+  }
+</style>

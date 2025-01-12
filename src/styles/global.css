@@ -1,0 +1,76 @@
+/*
+COLORS
+================================================ */
+:root {
+  --light-blue: #8fcef1;
+  --blue: #1665cc;
+  --light-grey: #ccc;
+  --grey: #333;
+  --white: #fff;
+}
+
+/*
+GENERAL STYLING
+================================================ */
+html {
+  font-size: 100%;
+  /* スムーズスクロール */
+  scroll-behavior: smooth;
+}
+body {
+  color: var(--grey);
+  background-color: #fff;
+  font-family: sans-serif;
+}
+
+/*
+COMMON
+================================================ */
+p {
+  line-height: 1.7;
+}
+img {
+  max-width: 100%;
+}
+h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+h1,
+h2 {
+  text-align: center;
+}
+header,
+h1,
+h2,
+.hero-date {
+  font-family: impact, sans-serif;
+}
+h3 {
+  font-size: 2rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+
+/* Layout */
+.wrapper {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  h2 {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+}

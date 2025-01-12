@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ButtonLink from "../../components/ButtonLink.astro";
+import { newtClient } from "../../lib/newt";
+import type { Article } from "../../lib/newt";
+import { formatDate } from "../../lib/utils";
+
+export async function getStaticPaths() {
+  const { items: postsData } = await newtClient.getContents<Article>({
+    appUid: "news",
+    modelUid: "article",
+    query: {
+      select: ["title", "slug", "coverImage", "body", "date", "category"],
+    },
+  });
+  const pages = postsData.map((postsContent) => {
+    return {
+      params: {
+        slug: postsContent.slug,
+      },
+      props: {
+        postsContent,
+      },
+    };
+  });
+  return pages;
+}
+
+const { postsContent } = Astro.props;
+---
+
+<BaseLayout
+  pageTitle={postsContent.title}
+  title={postsContent.title}
+  description=`とちぎ星団民の会の投稿詳細ページ|${postsContent.title}`
+>
+  <div class="slugBody">
+    <div class="postTitleWrapper">
+      <h2 class="postTitle">{postsContent.title}</h2>
+    </div>
+    <div class="wrapper">
+      <section class="postMeta">
+        <p>{formatDate(postsContent.date)}</p>
+        <p>{postsContent.category.name}</p>
+      </section>
+      <section class="coverImageWrapper">
+        <p>
+          <img src={postsContent.coverImage.src} alt="" class="coverImage" />
+        </p>
+      </section>
+      <section class="contentBody">
+        <article set:html={postsContent.body} />
+      </section>
+      <div class="ButtonLink">
+        <ButtonLink href="/news/page/" label="ニュース一覧へ戻る" />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .postTitleWrapper {
+    padding-top: 5rem;
+    background-image: linear-gradient(var(--light-blue), var(--blue));
+    padding: 7rem 0;
+    -webkit-clip-path: polygon(0 7%, 100% 15%, 100% 90%, 0 96%);
+    clip-path: polygon(0 7%, 100% 15%, 100% 90%, 0 96%);
+  }
+  .postMeta p {
+    text-align: right;
+  }
+  .coverImageWrapper p {
+    text-align: center;
+  }
+  .contentBody {
+    max-width: 600px;
+    margin: 5cm auto;
+  }
+  .ButtonLink {
+    max-width: 800px;
+    width: 100%;
+    margin: 10rem auto 10rem auto;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 600px) {
+    .postTitle {
+      font-size: 3rem;
+      max-width: 800px;
+      width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .coverImage {
+      width: 600px;
+      height: auto;
+      max-width: 600px;
+    }
+  }
+</style>

@@ -1,0 +1,142 @@
+---
+import { newtClient } from "../lib/newt";
+import type { Member } from "../lib/newt";
+import Social from "../components/Social.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ButtonLink from "../components/ButtonLink.astro";
+
+const { items: members } = await newtClient.getContents<Member>({
+  appUid: "member",
+  modelUid: "member",
+  query: {
+    order: ["_sys.customOrder"],
+    select: ["name", "image", "description", "xid"],
+  },
+});
+
+const pageTitle = "メンバー";
+const title = "メンバー";
+const subTitle = "Member";
+const description = "とちぎ星団民の会のメンバー紹介";
+---
+
+<BaseLayout
+  pageTitle={pageTitle}
+  title={title}
+  subTitle={subTitle}
+  description={description}
+>
+  <section id="member">
+    <div>
+      <h2>Member</h2>
+    </div>
+    <div class="memberList">
+      {
+        members.map((member) => (
+          <div class="bgWrapper">
+            <li class="memberContentWrapper">
+              <p>
+                <img src={member.image.src} alt="" class="memberImage" />
+              </p>
+              <dl class="memberContent">
+                <dt class="memberName">{member.name}</dt>
+                <dd>
+                  <p class="memberDescription">{member.description}</p>
+                </dd>
+                <dd>
+                  <p class="memberSocial">
+                    <Social platform="X" username={member.xid} />
+                  </p>
+                </dd>
+              </dl>
+            </li>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <div class="ButtonLink">
+    <ButtonLink href="/" label="ホームへ戻る" />
+  </div>
+</BaseLayout>
+
+<style>
+  section {
+    padding-top: 80px;
+  }
+
+  .memberList {
+    list-style: none;
+  }
+
+  .bgWrapper:nth-child(odd) {
+    background-image: linear-gradient(var(--light-blue), var(--blue));
+    padding: 7rem 0;
+    -webkit-clip-path: polygon(0 0, 100% 15%, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 15%, 100% 85%, 0 100%);
+  }
+
+  .memberContentWrapper {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .memberContent {
+    margin: 1rem;
+  }
+
+  .memberImage {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .memberName {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .ButtonLink {
+    max-width: 800px;
+    width: 100%;
+    margin: 2rem auto 5rem;
+    padding: 0 1rem;
+  }
+
+  /* 大きい画面（600px以上）向けのスタイル */
+  @media (min-width: 600px) {
+    .memberContentWrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .memberContentWrapper:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .memberImage {
+      display: block;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .memberName {
+      font-size: 1.1rem;
+    }
+
+    .memberContent {
+      gap: 16px;
+    }
+
+    .memberSocial {
+    }
+  }
+</style>

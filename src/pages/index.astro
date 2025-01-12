@@ -1,11 +1,179 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TopNewsList from "../components/TopNewsList.astro";
+import ButtonLink from "../components/ButtonLink.astro";
+import Social from "../components/Social.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const pageTitle = "とちぎ星団民の会";
+const title = "とちぎ星団民の会";
+const subTitle = "Star Cluster People's Association Tochigi";
+const description = "とちぎ星団民の会のホームページです。";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  pageTitle={pageTitle}
+  title={title}
+  subTitle={subTitle}
+  description={description}
+>
+  <section id="hero">
+    <div class="wrapper">
+      <h1>{title}</h1>
+      <p>
+        {subTitle}
+      </p>
+    </div>
+  </section>
+  <section id="news">
+    <h2><a href="/news/page">News</a></h2>
+    <div class="wrapper">
+      <TopNewsList limit="3" />
+      <ButtonLink href="/news/page" label="もっとみる" />
+    </div>
+  </section>
+  <section id="about">
+    <div class="wrapper">
+      <h2>About</h2>
+      <p>
+        私たち「とちぎ星団民の会」は２か月に一度、ミテーティングを行ったり、<br
+        />
+        他サークルの展示会へお邪魔したりしています。<br />
+        模型はFSSに限らず、ガンプラやスケモ、美ガレなど多岐にわたり話題は尽きません。<br
+        />
+        定例会へは、栃木県以外にも関東近県や、東北地方、近畿地方からの参加者もいらっしゃいます。<br
+        />
+        和気あいあいとした雰囲気で模型や工作方法について談笑していますので、<br
+        />
+        気になる方はお気軽にご参加ください。新規の方、見学の方も大歓迎です！
+      </p>
+      <div class="container">
+        <table class="about-table">
+          <caption class="about-caption"><strong>活動概要</strong></caption>
+          <tr>
+            <th>サークル名</th>
+            <td>とちぎ星団民の会</td>
+          </tr>
+          <tr>
+            <th>主な活動場所</th>
+            <td>宇都宮市中央市民活動センター</td>
+          </tr>
+          <tr>
+            <th>活動内容</th>
+            <td>２か月に一度のミーティングや他イベントへの参加</td>
+          </tr>
+          <tr>
+            <th>参加方法</th>
+            <td>下記お問い合わせ欄に記載</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrapper">
+      <h2>Contact</h2>
+      <p>下記、XアカウントへDMにて参加希望の旨ご連絡下さい。</p>
+      <p class="social">
+        <Social platform="X" username="" />
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /*
+HERO
+================================================ */
+  #hero {
+    /* ↓ 省略形だとブラウザーによってうまく表示されない*/
+    background-image: url("/bg.jpg");
+    background-color: var(--grey);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: multiply;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  }
+  #hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  #hero div p {
+    text-align: center;
+  }
+  #hero .wrapper {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  /*
+NEWS
+================================================ */
+  #news {
+    background-image: linear-gradient(var(--light-blue), var(--blue));
+    padding: 7rem 0;
+    -webkit-clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
+    clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
+  }
+  #news h2 {
+    color: var(--grey);
+  }
+
+  /*
+ABOUT
+================================================ */
+  #about p {
+    margin-bottom: 2rem;
+  }
+  #about .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-caption {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  /*
+CONTACT
+================================================ */
+  #contact {
+    background-image: linear-gradient(var(--light-blue), var(--blue));
+    padding: 4rem 1rem;
+    -webkit-clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
+    clip-path: polygon(0 0, 100% 20%, 100% 80%, 0 100%);
+    margin-bottom: 5rem;
+  }
+  #contact p {
+    text-align: center;
+    margin: 1rem auto;
+  }
+  /*
+DESKTOP SIZE
+================================================ */
+  @media (min-width: 600px) {
+    /* Common */
+    h2 {
+      font-size: 5rem;
+    }
+    a:hover {
+      transition: 0.3s;
+    }
+    a:hover {
+      color: var(--light-brown);
+    }
+
+    /* Hero */
+    #hero h1 {
+      font-size: 5rem;
+    }
+    .hero-date {
+      font-size: 3rem;
+    }
+  }
+</style>

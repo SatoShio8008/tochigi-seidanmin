@@ -1,0 +1,77 @@
+---
+---
+
+<button type="button" class="MenuBtn Style01">
+  <span class="MenuBtn-BarFrame">
+    <span class="MenuBtn-BarFrame-FirstBar"></span>
+    <span class="MenuBtn-BarFrame-SecondBar"></span>
+    <span class="MenuBtn-BarFrame-ThirdBar"></span>
+  </span>
+</button>
+
+<style>
+  .MenuBtn.Style01 {
+    position: relative;
+
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: solid 2px #fff;
+  }
+  .MenuBtn.Style01 .MenuBtn-BarFrame {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 2px;
+  }
+  .MenuBtn.Style01 .MenuBtn-BarFrame-FirstBar {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: all 0.15s linear;
+  }
+  .MenuBtn.Style01 .MenuBtn-BarFrame-SecondBar {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: all 0.15s linear;
+
+    transform: translateY(-8px) rotate(0deg);
+  }
+  .MenuBtn.Style01 .MenuBtn-BarFrame-ThirdBar {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: all 0.15s linear;
+
+    transform: translateY(8px) rotate(0deg);
+  }
+  .MenuBtn.Style01.open-menu .MenuBtn-BarFrame-FirstBar {
+    opacity: 0;
+  }
+  .MenuBtn.Style01.open-menu .MenuBtn-BarFrame-SecondBar {
+    transform: translateY(0) rotate(45deg);
+  }
+  .MenuBtn.Style01.open-menu .MenuBtn-BarFrame-ThirdBar {
+    transform: translateY(0) rotate(-45deg);
+  }
+
+  @media (min-width: 600px) {
+    /* Header */
+    .btn-menu {
+      display: none;
+    }
+    .MenuBtn.Style01 {
+      display: none;
+    }
+  }
+</style>

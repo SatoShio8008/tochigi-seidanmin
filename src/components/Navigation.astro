@@ -1,0 +1,57 @@
+---
+---
+
+<ul class="main-nav">
+  <li><a href="/news/page" class="link-in-page">News</a></li>
+  <li><a href="/#about" class="link-in-page">About</a></li>
+  <li><a href="/#contact" class="link-in-page">Contact</a></li>
+  <li><a href="/member/">Member</a></li>
+  <li><a href="/gallery/">Gallery</a></li>
+</ul>
+
+<style>
+  .main-nav {
+    background: var(--grey);
+    width: 0;
+    position: absolute;
+    z-index: 2;
+    top: 75px;
+    right: 0;
+    overflow: hidden;
+    transition: 0.5s;
+  }
+  .main-nav li {
+    text-align: center;
+    margin: 2rem 0;
+  }
+  .main-nav a {
+    color: var(--white);
+    display: block;
+    font-size: 2rem;
+  }
+  .main-nav.open-menu {
+    width: 100%;
+  }
+
+  @media (min-width: 600px) {
+    /* Header */
+    .main-nav {
+      width: 100%;
+      position: static;
+      display: flex;
+    }
+    .main-nav li {
+      margin: 0 0 0 1.5rem;
+    }
+    .main-nav a {
+      color: var(--white);
+      font-size: 1.5rem;
+    }
+    .main-nav a:hover {
+      transition: 0.3s;
+    }
+    .main-nav a:hover {
+      color: var(--blue);
+    }
+  }
+</style>

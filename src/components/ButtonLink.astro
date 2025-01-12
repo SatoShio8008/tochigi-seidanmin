@@ -1,0 +1,28 @@
+---
+export interface Props {
+  href: string;
+  label: string;
+}
+
+const { href, label = "Click here" } = Astro.props;
+---
+
+<a href={href}>{label}</a>
+
+<style>
+  a {
+    display: block;
+    margin: 0 0 0 auto;
+    padding: 20px 40px;
+    border-radius: 5px;
+    width: 250px;
+    background: url("../../public/arrow-right.svg") no-repeat right 20px center,
+      var(--grey);
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  a:hover {
+    background-color: var(--light-grey);
+  }
+</style>

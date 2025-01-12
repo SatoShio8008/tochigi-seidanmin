@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ButtonLink from "../components/ButtonLink.astro";
+
+const pageTitle = "ページが見つかりませんでした";
+const title = "404 Not Found";
+const description = "ページが見つかりませんでした";
+---
+
+<BaseLayout pageTitle={pageTitle} title={title} description={description}>
+  <section class="NotFound">
+    <div class="Title">
+      <h2>404Not Found</h2>
+    </div>
+    <div class="wrapper">
+      <p>
+        あなたがアクセスしようとしたページは存在しません。
+        <br />
+        URLを再度ご確認ください。
+      </p>
+    </div>
+  </section>
+  <div class="ButtonLink">
+    <ButtonLink href="/" label="ホームへ戻る" />
+  </div>
+</BaseLayout>
+
+<style>
+  section {
+    padding-top: 60px;
+  }
+  .Title {
+    background-image: linear-gradient(var(--light-blue), var(--blue));
+    padding: 7rem 0;
+    -webkit-clip-path: polygon(0 0, 100% 15%, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 15%, 100% 85%, 0 100%);
+  }
+  .wrapper p {
+    text-align: center;
+  }
+  .ButtonLink {
+    max-width: 800px;
+    width: 100%;
+    margin: 10rem auto 10rem auto;
+    padding: 0 1rem;
+  }
+</style>

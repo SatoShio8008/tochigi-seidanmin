@@ -1,0 +1,32 @@
+---
+const { platform, username } = Astro.props;
+---
+
+<ul class="contact-sns">
+  <li>
+    <a href={`https://www.${platform}.com/${username}`}
+      ><i class="fa-brands fa-square-x-twitter"></i></a
+    >
+  </li>
+</ul>
+
+<style>
+  .contact-sns {
+    display: flex;
+    justify-content: center;
+  }
+  .contact-sns a {
+    width: 4rem;
+    height: 4rem;
+    display: inline-block;
+    border: 1px solid #333;
+    border-radius: 50%;
+    font-size: 3rem;
+    padding: 0.5rem 0 0 0.65rem;
+    color: var(--grey);
+    background-color: var(--white);
+  }
+  .contact-sns a:hover {
+    color: var(--light-grey);
+  }
+</style>

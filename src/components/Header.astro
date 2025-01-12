@@ -1,0 +1,48 @@
+---
+import Hamburger from "./Hamburger.astro";
+import Navigation from "./Navigation.astro";
+---
+
+<header>
+  <div class="wrapper">
+    <a class="logo" href="/">SCPA-Tochigi</a>
+    <nav>
+      <Hamburger />
+      <Navigation />
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    background: var(--grey);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+  }
+  header .wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  header a {
+    color: var(--white);
+    font-size: 1.5rem;
+  }
+
+  /*
+DESKTOP SIZE
+================================================ */
+  @media (min-width: 600px) {
+    /* Common */
+    header h2 {
+      font-size: 5rem;
+    }
+    header a:hover {
+      transition: 0.3s;
+    }
+    header a:hover {
+      color: var(--blue);
+    }
+  }
+</style>
