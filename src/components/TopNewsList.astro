@@ -21,7 +21,11 @@ const { items: articles } = await newtClient.getContents<Article>({
       return (
         <li class="list">
           <a href={`/news/${article.slug}`} class="link">
-            <img src={article.coverImage.src} alt="" class="newsImage" />
+            <img
+              src={article.coverImage.src}
+              alt={article.title}
+              class="newsImage"
+            />
           </a>
           <dl class="newsContent">
             <dt class="newsTitle">
