@@ -31,12 +31,12 @@ const { items: gallerys } = await newtClient.getContents<Gallery>({
           return (
             <a
               class="grid-gallery"
-              href={gallery.picture.src}
+              href={`${gallery.picture.src}?format=auto`}
               data-aos="fade-up"
             >
               <img
                 class="grid-item"
-                src={gallery.picture.src}
+                src={`${gallery.picture.src}?quarity=40&format=auto`}
                 alt={gallery.alt}
               />
             </a>
@@ -87,17 +87,6 @@ GRID
   }
 
   /*
-LIGHTBOX LUMINOUS
-================================================ */
-  .lum-lightbox.lum-open {
-    z-index: 4;
-  }
-  .lum-lightbox-inner img {
-    max-width: 120vw;
-    max-height: 80vh;
-  }
-
-  /*
 DESKTOP SIZE
 ================================================ */
   @media (min-width: 600px) {
@@ -123,5 +112,16 @@ DESKTOP SIZE
       z-index: 3;
       position: relative;
     }
+  }
+</style>
+<style is:inline>
+  /*
+LIGHTBOX LUMINOUS
+================================================ */
+  .lum-lightbox.lum-open {
+    z-index: 4;
+  }
+  .lum-lightbox-inner img {
+    max-width: 100vw !important;
   }
 </style>

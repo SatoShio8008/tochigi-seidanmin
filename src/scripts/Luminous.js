@@ -1,5 +1,4 @@
 /* Lightbox Luminous */
-// new LuminousGallery(document.querySelectorAll(".grid-gallery"));
 new LuminousGallery(
   document.querySelectorAll(".grid-gallery"),
   {},
@@ -11,7 +10,6 @@ new LuminousGallery(
 );
 
 /* Fadeup Animation AOS */
-// AOS.init();
 AOS.init({
   duration: 1000,
 });
