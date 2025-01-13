@@ -6,7 +6,7 @@ import Social from "../components/Social.astro";
 
 const pageTitle = "とちぎ星団民の会";
 const title = "とちぎ星団民の会";
-const subTitle = "Star Cluster People's Association Tochigi";
+const subTitle = "- Tochigi Star Story Modelers Club -";
 const description = "とちぎ星団民の会のホームページです。";
 ---
 
@@ -19,9 +19,9 @@ const description = "とちぎ星団民の会のホームページです。";
   <section id="hero">
     <div class="wrapper">
       <h1>{title}</h1>
-      <p>
+      <h3>
         {subTitle}
-      </p>
+      </h3>
     </div>
   </section>
   <section id="news">
@@ -102,6 +102,9 @@ HERO
   #hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
+  }
+  #hero h3 {
+    text-align: center;
   }
   #hero div p {
     text-align: center;
