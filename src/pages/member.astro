@@ -36,7 +36,11 @@ const description = "とちぎ星団民の会のメンバー紹介";
           <div class="bgWrapper">
             <li class="memberContentWrapper">
               <p>
-                <img src={member.image.src} alt="" class="memberImage" />
+                <img
+                  src={member.image.src}
+                  alt={member.name}
+                  class="memberImage"
+                />
               </p>
               <dl class="memberContent">
                 <dt class="memberName">{member.name}</dt>
