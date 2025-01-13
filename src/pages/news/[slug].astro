@@ -45,7 +45,11 @@ const { postsContent } = Astro.props;
       </section>
       <section class="coverImageWrapper">
         <p>
-          <img src={postsContent.coverImage.src} alt="" class="coverImage" />
+          <img
+            src=`${postsContent.coverImage.src}?format=auto`
+            alt={postsContent.title}
+            class="coverImage"
+          />
         </p>
       </section>
       <section class="contentBody">
