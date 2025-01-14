@@ -22,7 +22,7 @@ const { items: articles } = await newtClient.getContents<Article>({
         <li class="list">
           <a href={`/news/${article.slug}`} class="link">
             <img
-              src={`${article.coverImage.src}?quarity=40&format=auto`}
+              src={`${article.coverImage.src}?quarity=30&format=auto`}
               alt={article.title}
               class="newsImage"
             />
