@@ -5,20 +5,14 @@ import ButtonLink from "../components/ButtonLink.astro";
 import Social from "../components/Social.astro";
 
 const pageTitle = "とちぎ星団民の会";
-const title = "とちぎ星団民の会";
 const subTitle = "- Tochigi Star Story Modelers Club -";
 const description = "とちぎ星団民の会のホームページです。";
 ---
 
-<BaseLayout
-  pageTitle={pageTitle}
-  title={title}
-  subTitle={subTitle}
-  description={description}
->
+<BaseLayout pageTitle={pageTitle} subTitle={subTitle} description={description}>
   <section id="hero">
     <div class="wrapper">
-      <h1 class="title">{title}</h1>
+      <h1 class="title"><img src="../../public/logo.png" alt="logo" /></h1>
       <p class="subTitle">{subTitle}</p>
     </div>
   </section>
@@ -73,7 +67,7 @@ const description = "とちぎ星団民の会のホームページです。";
       <h2>Contact</h2>
       <p>下記、XアカウントへDMにて参加希望の旨ご連絡下さい。</p>
       <p class="social">
-        <Social platform="X" username="" />
+        <Social platform="X" username="SuraromaFactory" />
       </p>
     </div>
   </section>
@@ -94,12 +88,8 @@ HERO
     height: 75vh;
     display: flex;
     align-items: center;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
   }
-  #hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+  #hero .title img {
   }
   #hero .subTitle {
     font-size: 2rem;
@@ -118,8 +108,8 @@ NEWS
   #news {
     background-image: linear-gradient(var(--light-blue), var(--blue));
     padding: 7rem 0;
-    -webkit-clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
-    clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
   }
   #news h2 {
     color: var(--grey);
@@ -171,8 +161,7 @@ DESKTOP SIZE
     }
 
     /* Hero */
-    #hero h1 {
-      font-size: 5rem;
+    #hero .title img {
     }
     .hero-date {
       font-size: 3rem;
