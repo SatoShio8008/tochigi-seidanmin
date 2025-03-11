@@ -31,7 +31,7 @@ const { items: gallerys } = await newtClient.getContents<Gallery>({
           return (
             <a
               class="grid-gallery"
-              href={`${gallery.picture.src}?format=auto'quarity=30`}
+              href={`${gallery.picture.src}?quarity=10&format=auto`}
               data-aos="fade-up"
             >
               <img
